@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "./static/js/main.a9c1c13a.chunk.js",
+    "main.js.map": "./static/js/main.a9c1c13a.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.f6f81845.js",
+    "runtime-main.js.map": "./static/js/runtime-main.f6f81845.js.map",
+    "static/css/2.2964def7.chunk.css": "./static/css/2.2964def7.chunk.css",
+    "static/js/2.aaa52b1c.chunk.js": "./static/js/2.aaa52b1c.chunk.js",
+    "static/js/2.aaa52b1c.chunk.js.map": "./static/js/2.aaa52b1c.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/2.2964def7.chunk.css.map": "./static/css/2.2964def7.chunk.css.map",
+    "static/js/2.aaa52b1c.chunk.js.LICENSE.txt": "./static/js/2.aaa52b1c.chunk.js.LICENSE.txt",
+    "static/media/curved0.d146ec6e.jpg": "./static/media/curved0.d146ec6e.jpg",
+    "static/media/ivancik.442b4747.jpg": "./static/media/ivancik.442b4747.jpg",
+    "static/media/logo.ab12d797.png": "./static/media/logo.ab12d797.png",
+    "static/media/team-2.e725aef8.jpg": "./static/media/team-2.e725aef8.jpg",
+    "static/media/waves-white.56607573.svg": "./static/media/waves-white.56607573.svg",
+    "static/media/white-curved.a5b7db66.jpeg": "./static/media/white-curved.a5b7db66.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f6f81845.js",
+    "static/css/2.2964def7.chunk.css",
+    "static/js/2.aaa52b1c.chunk.js",
+    "static/js/main.a9c1c13a.chunk.js"
+  ]
+}
