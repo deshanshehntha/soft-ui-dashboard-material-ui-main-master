@@ -39,7 +39,7 @@ import Settings from "examples/Icons/Settings";
 import breakpoints from "assets/theme/base/breakpoints";
 
 // Custom styles for create-header
-import styles from "layouts/profile/components/Header/styles";
+import styles from "./styles";
 
 // Images
 import logo from "assets/images/logo.png";

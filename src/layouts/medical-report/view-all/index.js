@@ -22,7 +22,7 @@ import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import PersonFilter from "../tables/data/PersonFilter";
 import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
-import { Backdrop, LinearProgress } from "@material-ui/core";
+import { Backdrop, CircularProgress, LinearProgress } from "@material-ui/core";
 import SuiTypography from "../../../components/SuiTypography";
 import SuiInput from "../../../components/SuiInput";
 import Dialog from "@material-ui/core/Dialog";
@@ -186,7 +186,11 @@ class SearchMedicalReports extends Component {
     console.log(selectedId)
     axios.delete("http://localhost:2021/api/v1/medicalReport/" + selectedId)
       .then(res => {
-        console.log(res)
+        if(res.data) {
+          this.props.alert.success("Successfully deleted");
+        } else {
+          this.props.alert.error("Delete failed");
+        }
         this.setState({
             viewMode: false,
             currentSelectedId: "",
@@ -328,7 +332,7 @@ class SearchMedicalReports extends Component {
 
         return (
           <DashboardLayout>
-            <LinearProgress />
+            <LinearProgress color="secondary" />
           </DashboardLayout>
         );
 
@@ -336,12 +340,6 @@ class SearchMedicalReports extends Component {
 
         return (
           <DashboardLayout>
-            <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-              open={this.state.backdrop}
-              onClick={this.handleBackDrop}
-            >
-            </Backdrop>
             <SuiBox py={3}>
               <SuiBox mb={3}>
                 <Card>
@@ -374,6 +372,8 @@ class SearchMedicalReports extends Component {
                       onClose={this.handleCloseDialogBox}
                       aria-labelledby="alert-dialog-title"
                       aria-describedby="alert-dialog-description"
+                      fullWidth
+                      maxWidth="sm"
                     >
                       <DialogTitle id="alert-dialog-title">
                         {"Are you sure ?"}
@@ -387,6 +387,24 @@ class SearchMedicalReports extends Component {
                         <SuiButton onClick={this.printReport} autoFocus>Yes</SuiButton>
                         <SuiButton onClick={this.handleCloseDialogBox} >No</SuiButton>
                       </DialogActions>
+                    </Dialog>
+
+                    <Dialog
+                      open={this.state.backdrop}
+                      aria-labelledby="alert-dialog-title"
+                      aria-describedby="alert-dialog-description"
+                      fullWidth
+                      maxWidth="sm"
+                    >
+                      <DialogTitle id="alert-dialog-title">
+                        {"Print in progress.."}
+                      </DialogTitle>
+                      <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                          Please wait...
+                        </DialogContentText>
+                        <CircularProgress/>
+                      </DialogContent>
                     </Dialog>
 
                   </SuiBox>

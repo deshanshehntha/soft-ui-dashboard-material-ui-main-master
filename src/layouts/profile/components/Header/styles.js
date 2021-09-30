@@ -17,7 +17,7 @@ Coded by www.creative-tim.com
 import { makeStyles } from "@material-ui/core/styles";
 
 // Images
-import curved0 from "assets/images/curved-images/curved0.jpg";
+import curved0 from "assets/images/diploma-medical.jpeg";
 
 export default makeStyles(({ palette, functions, borders, boxShadows }) => {
   const { gradients, white } = palette;

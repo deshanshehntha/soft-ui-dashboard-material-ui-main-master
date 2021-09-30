@@ -22,7 +22,7 @@ import Searchable from "react-searchable-dropdown";
 import Header from "./view-header/index";
 import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
-import { LinearProgress } from "@material-ui/core";
+import { CircularProgress, LinearProgress } from "@material-ui/core";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -43,6 +43,7 @@ class CreateMedicalReport extends Component {
     this.printReport = this.printReport.bind(this);
     this.handleCloseDialogBox = this.handleCloseDialogBox.bind(this);
     this.runConfirmation = this.runConfirmation.bind(this);
+    this.handleBackDrop = this.handleBackDrop.bind(this);
 
     this.state = {
       tests: [],
@@ -58,7 +59,14 @@ class CreateMedicalReport extends Component {
       viewMode: false,
       loading: false,
       open: false,
+      backdrop : false
     };
+  }
+
+  handleBackDrop() {
+    this.setState({
+      backdrop : false
+    })
   }
 
   handleCloseDialogBox() {
@@ -69,10 +77,22 @@ class CreateMedicalReport extends Component {
 
   printReport(){
     this.setState({
-      open : false
+      open : false,
+      backdrop : true
     })
     axios.get("http://localhost:2021/api/v1/medicalReport/" + this.state.createdId + "/print")
       .then(result => {
+
+        this.setState({
+          backdrop : false
+        })
+
+        if(result.data) {
+          this.props.alert.success("Print Successfull");
+        } else {
+          this.props.alert.error("Print failed");
+        }
+
       })
       .catch(error => {
         console.log(error);
@@ -403,7 +423,7 @@ class CreateMedicalReport extends Component {
 
         return (
           <DashboardLayout>
-            <LinearProgress />
+            <LinearProgress color="secondary" />
           </DashboardLayout>
         )
 
@@ -447,6 +467,24 @@ class CreateMedicalReport extends Component {
                       <SuiButton onClick={this.printReport} autoFocus>Yes</SuiButton>
                       <SuiButton onClick={this.handleCloseDialogBox} >No</SuiButton>
                     </DialogActions>
+                  </Dialog>
+
+                  <Dialog
+                    open={this.state.backdrop}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    fullWidth
+                    maxWidth="sm"
+                  >
+                    <DialogTitle id="alert-dialog-title">
+                      {"Print in progress.."}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Please wait...
+                      </DialogContentText>
+                      <CircularProgress/>
+                    </DialogContent>
                   </Dialog>
 
                   <img width="100%" height="100%"
