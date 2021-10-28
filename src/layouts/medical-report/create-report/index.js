@@ -22,7 +22,7 @@ import Searchable from "react-searchable-dropdown";
 import Header from "./view-header/index";
 import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
-import { CircularProgress, LinearProgress } from "@material-ui/core";
+import { CircularProgress, LinearProgress, RadioGroup } from "@material-ui/core";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -310,7 +310,7 @@ class CreateMedicalReport extends Component {
                                 Age
                               </SuiTypography>
                             </SuiBox>
-                            <SuiInput type="number" placeholder="age"
+                            <SuiInput type="text" placeholder="age"
                                       onChange={(e) => {
                                         this.setState({
                                           age: e.target.value,
